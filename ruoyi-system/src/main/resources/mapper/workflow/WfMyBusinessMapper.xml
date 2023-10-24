@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.workflow.mapper.WfMyBusinessMapper">
+
+    <resultMap type="com.ruoyi.workflow.domain.WfMyBusiness" id="WfMyBusinessResult">
+        <result property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="processDefinitionKey" column="process_definition_key"/>
+        <result property="processDefinitionId" column="process_definition_id"/>
+        <result property="processInstanceId" column="process_instance_id"/>
+        <result property="title" column="title"/>
+        <result property="dataId" column="data_id"/>
+        <result property="serviceImplName" column="service_impl_name"/>
+        <result property="proposer" column="proposer"/>
+        <result property="actStatus" column="act_status"/>
+        <result property="taskId" column="task_id"/>
+        <result property="taskName" column="task_name"/>
+        <result property="taskNameId" column="task_name_id"/>
+        <result property="todoUsers" column="todo_users"/>
+        <result property="doneUsers" column="done_users"/>
+        <result property="priority" column="priority"/>
+        <result property="routeName" column="route_name"/>
+        <result property="deployId" column="deploy_id"/>
+    </resultMap>
+
+
+</mapper>

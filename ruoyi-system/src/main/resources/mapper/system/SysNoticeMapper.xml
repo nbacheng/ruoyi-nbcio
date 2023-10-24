@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysNoticeMapper">
+
+    <resultMap type="com.ruoyi.system.domain.SysNotice" id="SysNoticeResult">
+        <result property="noticeId" column="notice_id"/>
+        <result property="noticeTitle" column="notice_title"/>
+        <result property="noticeType" column="notice_type"/>
+        <result property="noticeContent" column="notice_content"/>
+        <result property="status" column="status"/>
+        <result property="sender" column="sender"/>
+        <result property="priority" column="priority"/>
+        <result property="msgType" column="msg_type"/>
+        <result property="sendStatus" column="send_status"/>
+        <result property="sendTime" column="send_time"/>
+        <result property="cancelTime" column="cancel_time"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    
+    <select id="querySysNoticeListByUserId" parameterType="String"  resultMap="SysNoticeResult">
+	   select * from sys_notice
+	   where send_status = '1' 
+	   and status = '0' 
+	   and notice_type = #{msgCategory} 
+	   and notice_id IN ( select notice_id from sys_notice_send where user_id = CAST(#{userId} AS SIGNED INTEGER) and read_flag = '0')
+	   order by create_time DESC
+	</select>
+
+</mapper>

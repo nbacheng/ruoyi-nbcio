@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.workflow.mapper.WfCustomFormMapper">
+
+    <resultMap type="com.ruoyi.workflow.domain.WfCustomForm" id="WfCustomFormResult">
+        <result property="id" column="id"/>
+        <result property="businessName" column="business_name"/>
+        <result property="businessService" column="business_service"/>
+        <result property="flowName" column="flow_name"/>
+        <result property="deployId" column="deploy_id"/>
+        <result property="routeName" column="route_name"/>
+        <result property="component" column="component"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    
+    <select id="selectSysCustomFormByServiceName" parameterType="String" resultType="com.ruoyi.workflow.domain.WfCustomForm">
+         select id, business_name, business_service, deploy_id, route_name,component,create_time, update_time, create_by, update_by 
+         from wf_custom_form where business_service = #{serviceName}
+    </select>
+
+    <update id="updateCustom" parameterType="Object">
+         update wf_custom_form set deploy_id= #{customFormVo.deployId}, flow_name=#{customFormVo.flowName} where id = #{customFormVo.id}
+    </update>
+</mapper>
